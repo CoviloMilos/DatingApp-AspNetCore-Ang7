@@ -1,0 +1,5 @@
+Database
+- Sqlite
+- Model first approach
+- ORM
+    - Entity Framework
