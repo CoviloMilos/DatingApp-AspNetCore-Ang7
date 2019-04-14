@@ -7,7 +7,8 @@ namespace DatingApp.API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) {}
 
-        // For every entity we need dbset
+        // For every entity we need DbSet
         public DbSet<Value> Values { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

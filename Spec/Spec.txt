@@ -3,3 +3,9 @@ Database
 - Model first approach
 - ORM
     - Entity Framework
+
+Password
+- Password Hash
+- Salting
+
+Repository Pattern
