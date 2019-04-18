@@ -3,6 +3,7 @@
     transition-duration: 500ms;
     transition-timing-function: ease-out;
     opacity: 0.7;
+    border-radius: 50%;
 }
 
 .card img {
