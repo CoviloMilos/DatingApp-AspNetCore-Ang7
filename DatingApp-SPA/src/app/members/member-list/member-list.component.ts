@@ -10,12 +10,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./member-list.component.css']
 })
 export class MemberListComponent implements OnInit {
-  users: User[];
+  users: User[] = [];
+  temp: User[];
   constructor(private userService: UserService,
               private alertify: AlertifyService,
               private route: ActivatedRoute) { }
 
+  // Testing purposes. Change this. Also add {{photoUrl}} at member-card
   ngOnInit() {
+    // DB 2 has first testing data so use this you know where.
+    /*this.route.data.subscribe(data => {
+      data['users'].forEach((element: User) => {
+        if(element.photoUrl != null)
+          this.users.push(element);
+      });
+    });*/
+
     this.route.data.subscribe(data => {
       this.users = data['users'];
     });
