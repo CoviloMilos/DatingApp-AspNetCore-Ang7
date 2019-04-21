@@ -13,7 +13,8 @@ import { NgForm } from '@angular/forms';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
-  @ViewChild('editForm') editForm: NgForm; 
+  @ViewChild('editForm') editForm: NgForm;
+  photoUrl: string;
   // Prevent closing tab browser with unsaved chagnes
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
@@ -31,6 +32,8 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    this.authService.currentPhoroUrl
+      .subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {
@@ -39,8 +42,12 @@ export class MemberEditComponent implements OnInit {
         (next) => {
         this.alertify.success('Profile updated successfully');
         this.editForm.reset(this.user);
-      },(error) => {
+      }, (error) => {
         this.alertify.error(error);
       });
+  }
+
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 }

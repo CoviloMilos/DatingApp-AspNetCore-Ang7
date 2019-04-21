@@ -97,7 +97,7 @@ namespace DatingApp.API
             }
 
             //app.UseHttpsRedirection();
-             seeder.SeedUsers();
+            seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             // Tell application about Authentication
             app.UseAuthentication();
