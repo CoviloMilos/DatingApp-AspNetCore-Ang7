@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    [ServiceFilter(typeof(LogUserActivity))] // Any time when any of this methods is called users LastActive date is updated with 
+    [ServiceFilter(typeof(LogUserActivity))] // Any time when any of this methods is called users LastActive date field is updated with 
     // IAsyncActionFilter inside LogUserActivity
     [Authorize]
     [Route("api/[controller]")]
@@ -28,10 +28,26 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers() 
+        public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams) 
         {
-            var users = await this._repo.GetUsers();
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userFromRepo = await _repo.GetUser(currentUserId);
+
+            userParams.UserId = currentUserId;
+
+            if (string.IsNullOrEmpty(userParams.Gender)) 
+            {
+                userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
+            }
+
+            var users = await this._repo.GetUsers(userParams);
+
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            Response.AddPagination(users.CurrentPage, users.PageSize, 
+                users.TotalCount, users.TotalPages);
+
             return Ok(usersToReturn);
         }
 
