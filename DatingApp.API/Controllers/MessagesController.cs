@@ -14,7 +14,6 @@ namespace DatingApp.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))] // Any time when any of this methods is called users LastActive date field is updated with 
     // IAsyncActionFilter inside LogUserActivity
-    [Authorize]
     [Route("api/users/{userId}/[controller]")]
     [ApiController]
     public class MessagesController : ControllerBase
