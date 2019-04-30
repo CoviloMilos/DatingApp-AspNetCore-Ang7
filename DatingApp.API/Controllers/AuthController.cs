@@ -55,7 +55,6 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
             var user = await _userManager.FindByNameAsync(userForLoginDto.Username); // Not good. It would be better to use FindByIdAsync but that method is accepting string as ID not int. 
-            
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, userForLoginDto.Password, false); // 3rd parameter is used for locking acc if lets say user tries to login 3 time fails.
 
