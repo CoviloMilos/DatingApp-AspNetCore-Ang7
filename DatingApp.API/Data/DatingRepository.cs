@@ -48,7 +48,8 @@ namespace DatingApp.API.Data
         public async Task<User> GetUser(int id)
         {
             // must include Photos
-            return await this._context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await this._context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            return user;
         }
 
         public async Task<PagedList<User>> GetUsers(UserParams userParams)

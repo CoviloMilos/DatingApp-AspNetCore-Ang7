@@ -40,7 +40,6 @@ import { PhotoManagementComponent } from './admin/photo-management/photo-managem
 import { AdminService } from './_services/admin.service';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 
-
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
