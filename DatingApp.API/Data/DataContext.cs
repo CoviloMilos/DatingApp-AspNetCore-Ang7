@@ -58,7 +58,9 @@ namespace DatingApp.API.Data
             builder.Entity<Message>()
                 .HasOne(m => m.Recipient)
                 .WithMany(m => m.MessagesReceived)
-                .OnDelete(DeleteBehavior.Restrict);    
+                .OnDelete(DeleteBehavior.Restrict);  
+
+            builder.Entity<Photo>().HasQueryFilter(p => p.IsApproved);  
         }
 
     }

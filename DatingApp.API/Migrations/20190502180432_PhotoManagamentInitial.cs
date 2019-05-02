@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class PhotoManagementInitial : Migration
+    public partial class PhotoManagamentInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -245,7 +245,7 @@ namespace DatingApp.API.Migrations
                     IsMain = table.Column<bool>(nullable: false),
                     PublicId = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
-                    isApproved = table.Column<bool>(nullable: false)
+                    IsApproved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

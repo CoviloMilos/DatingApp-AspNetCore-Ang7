@@ -68,6 +68,8 @@ namespace DatingApp.API.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("IsApproved");
+
                     b.Property<bool>("IsMain");
 
                     b.Property<string>("PublicId");
@@ -75,8 +77,6 @@ namespace DatingApp.API.Migrations
                     b.Property<string>("Url");
 
                     b.Property<int>("UserId");
-
-                    b.Property<bool>("isApproved");
 
                     b.HasKey("Id");
 
